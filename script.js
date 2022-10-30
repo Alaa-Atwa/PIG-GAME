@@ -62,7 +62,7 @@ holdScore.addEventListener('click', function () {
     total0 += totalScore0;
     score0.textContent = total0;
     currentScore0.textContent = 0;
-    if (total0 >= 30) {
+    if (total0 >= 50) {
       player0.classList.add('player--winner');
       resetGame();
     }
@@ -71,7 +71,7 @@ holdScore.addEventListener('click', function () {
     total1 += totalScore1;
     score1.textContent = total1;
     currentScore1.textContent = 0;
-    if (total1 >= 30) {
+    if (total1 >= 50) {
       player1.classList.add('player--winner');
       winner = 2;
       resetGame();
