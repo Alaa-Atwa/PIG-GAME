@@ -11,26 +11,32 @@ const currentScore1 = document.querySelector('#current--1');
 const holdScore = document.querySelector('.btn--hold');
 const newGame = document.querySelector('.btn--new');
 
-let randomDice;
-score0.textContent = 0;
-score1.textContent = 0;
+let randomDice, totalScore1, totalScore0, total0, total1, playing;
+
+const init = () => {
+  score0.textContent = 0;
+  score1.textContent = 0;
+  totalScore1 = 0;
+  totalScore0 = 0;
+  total0 = 0;
+  total1 = 0;
+  playing = true;
+  player0.classList.remove('player--winner');
+  player1.classList.remove('player--winner');
+};
+
+init();
+
 //player1
-let totalScore0 = 0;
-let total0 = 0;
 const playerOneActive = function () {
   totalScore0 += randomDice;
   currentScore0.textContent = totalScore0;
 };
-
 //player2
-let total1 = 0;
-let totalScore1 = 0;
 const playerTwoActive = function () {
   totalScore1 += randomDice;
   currentScore1.textContent = totalScore1;
 };
-
-let playing = true;
 
 // Rolling The Dice Logic
 rollDice.addEventListener('click', function () {
@@ -56,7 +62,7 @@ rollDice.addEventListener('click', function () {
 let winner = 1;
 const resetGame = () => {
   let r = confirm(`player ${winner} wins ! , Reset Game? `);
-  if (r == true) location.reload();
+  if (r == true) init();
 };
 
 // holding The Score And Determine The Winner
@@ -90,7 +96,5 @@ holdScore.addEventListener('click', function () {
 });
 
 // Reseting The Game
-newGame.addEventListener('click', function () {
-  location.reload();
-});
+newGame.addEventListener('click', init);
 
