@@ -30,22 +30,26 @@ const playerTwoActive = function () {
   currentScore1.textContent = totalScore1;
 };
 
+let playing = true;
+
 // Rolling The Dice Logic
 rollDice.addEventListener('click', function () {
-  randomDice = Number(Math.floor(Math.random() * 6) + 1);
-  diceImage.setAttribute('src', `./dice-images/dice-${randomDice}.png`);
-  if (randomDice === 1) {
-    player0.classList.toggle('player--active');
-    player1.classList.toggle('player--active');
-  }
-  if (player0.classList.contains('player--active')) {
-    playerOneActive();
-    currentScore1.textContent = 0;
-    totalScore1 = 0;
-  } else {
-    playerTwoActive();
-    currentScore0.textContent = 0;
-    totalScore0 = 0;
+  if (playing) {
+    randomDice = Number(Math.floor(Math.random() * 6) + 1);
+    diceImage.setAttribute('src', `./dice-images/dice-${randomDice}.png`);
+    if (randomDice === 1) {
+      player0.classList.toggle('player--active');
+      player1.classList.toggle('player--active');
+    }
+    if (player0.classList.contains('player--active')) {
+      playerOneActive();
+      currentScore1.textContent = 0;
+      totalScore1 = 0;
+    } else {
+      playerTwoActive();
+      currentScore0.textContent = 0;
+      totalScore0 = 0;
+    }
   }
 });
 // confirm replaying
@@ -57,28 +61,32 @@ const resetGame = () => {
 
 // holding The Score And Determine The Winner
 holdScore.addEventListener('click', function () {
-  if (player0.classList.contains('player--active')) {
-    totalScore1 = 0;
-    total0 += totalScore0;
-    score0.textContent = total0;
-    currentScore0.textContent = 0;
-    if (total0 >= 30) {
-      player0.classList.add('player--winner');
-      resetGame();
+  if (playing) {
+    if (player0.classList.contains('player--active')) {
+      totalScore1 = 0;
+      total0 += totalScore0;
+      score0.textContent = total0;
+      currentScore0.textContent = 0;
+      if (total0 >= 30) {
+        player0.classList.add('player--winner');
+        playing = false;
+        resetGame();
+      }
+    } else {
+      totalScore0 = 0;
+      total1 += totalScore1;
+      score1.textContent = total1;
+      currentScore1.textContent = 0;
+      if (total1 >= 30) {
+        player1.classList.add('player--winner');
+        winner = 2;
+        playing = false;
+        resetGame();
+      }
     }
-  } else {
-    totalScore0 = 0;
-    total1 += totalScore1;
-    score1.textContent = total1;
-    currentScore1.textContent = 0;
-    if (total1 >= 30) {
-      player1.classList.add('player--winner');
-      winner = 2;
-      resetGame();
-    }
+    player0.classList.toggle('player--active');
+    player1.classList.toggle('player--active');
   }
-  player0.classList.toggle('player--active');
-  player1.classList.toggle('player--active');
 });
 
 // Reseting The Game
