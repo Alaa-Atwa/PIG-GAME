@@ -7,4 +7,4 @@
 ![Alt text](https://github.com/Alaa-Atwa/PIG-GAME/blob/main/pig-game-flowchart.png "game logic")
 ---
 ## Notes 
-- the high score is only 50 , just to reach the result faster.
+- the high score is only 30 , just to reach the result faster.
