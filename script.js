@@ -68,6 +68,7 @@ holdScore.addEventListener('click', function () {
     currentScore0.textContent = 0;
     if (total0 >= 30) {
       player0.classList.add('player--winner');
+      playing = false;
       resetGame();
     }
   } else {
@@ -78,6 +79,7 @@ holdScore.addEventListener('click', function () {
     if (total1 >= 30) {
       player1.classList.add('player--winner');
       winner = 2;
+      playing = false;
       resetGame();
     }
   }
