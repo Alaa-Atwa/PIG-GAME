@@ -1,6 +1,7 @@
 # PIG-GAME
 
-a simple roll the dice game between two players, application on DOM and javascript
+- a simple roll the dice game between two players, application on DOM and javascript
+- link :  [https://my-pig-game2022.netlify.app/](https://my-pig-game2022.netlify.app/)
 ---
 # Game logic 
 ![Alt text](https://github.com/Alaa-Atwa/PIG-GAME/blob/main/pig-game-flowchart.png "game logic")
