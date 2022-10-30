@@ -48,6 +48,12 @@ rollDice.addEventListener('click', function () {
     totalScore0 = 0;
   }
 });
+// confirm replaying
+let winner = 1;
+const resetGame = () => {
+  let r = confirm(`player ${winner} wins ! , Reset Game? `);
+  if (r == true) location.reload();
+};
 
 // holding The Score And Determine The Winner
 holdScore.addEventListener('click', function () {
@@ -56,16 +62,19 @@ holdScore.addEventListener('click', function () {
     total0 += totalScore0;
     score0.textContent = total0;
     currentScore0.textContent = 0;
-    if (total0 >= 50) {
-      alert('player 1 wins !');
+    if (total0 >= 30) {
+      player0.classList.add('player--winner');
+      resetGame();
     }
   } else {
     totalScore0 = 0;
     total1 += totalScore1;
     score1.textContent = total1;
     currentScore1.textContent = 0;
-    if (total1 >= 50) {
-      alert('player 2 wins !');
+    if (total1 >= 30) {
+      player1.classList.add('player--winner');
+      winner = 2;
+      resetGame();
     }
   }
   player0.classList.toggle('player--active');
