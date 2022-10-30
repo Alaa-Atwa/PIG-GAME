@@ -61,32 +61,28 @@ const resetGame = () => {
 
 // holding The Score And Determine The Winner
 holdScore.addEventListener('click', function () {
-  if (playing) {
-    if (player0.classList.contains('player--active')) {
-      totalScore1 = 0;
-      total0 += totalScore0;
-      score0.textContent = total0;
-      currentScore0.textContent = 0;
-      if (total0 >= 30) {
-        player0.classList.add('player--winner');
-        playing = false;
-        resetGame();
-      }
-    } else {
-      totalScore0 = 0;
-      total1 += totalScore1;
-      score1.textContent = total1;
-      currentScore1.textContent = 0;
-      if (total1 >= 30) {
-        player1.classList.add('player--winner');
-        winner = 2;
-        playing = false;
-        resetGame();
-      }
+  if (player0.classList.contains('player--active')) {
+    totalScore1 = 0;
+    total0 += totalScore0;
+    score0.textContent = total0;
+    currentScore0.textContent = 0;
+    if (total0 >= 30) {
+      player0.classList.add('player--winner');
+      resetGame();
     }
-    player0.classList.toggle('player--active');
-    player1.classList.toggle('player--active');
+  } else {
+    totalScore0 = 0;
+    total1 += totalScore1;
+    score1.textContent = total1;
+    currentScore1.textContent = 0;
+    if (total1 >= 30) {
+      player1.classList.add('player--winner');
+      winner = 2;
+      resetGame();
+    }
   }
+  player0.classList.toggle('player--active');
+  player1.classList.toggle('player--active');
 });
 
 // Reseting The Game
